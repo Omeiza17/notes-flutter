@@ -61,8 +61,22 @@ class FirebaseAuthFacade implements IAuthFacade {
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> signInWithGoogle() {
-    // TODO: implement signInWithGoogle
-    return null;
+  Future<Either<AuthFailure, Unit>> signInWithGoogle() async {
+    try {
+      final googleUser = await _googleSignIn.signIn();
+      if (googleUser != null) {
+        return left(AuthFailure.cancelledByUser());
+      }
+      final googleAuthentication = await googleUser.authentication;
+      final authCredential = GoogleAuthProvider.getCredential(
+        idToken: googleAuthentication.idToken,
+        accessToken: googleAuthentication.accessToken,
+      );
+      return _firebaseAuth
+          .signInWithCredential(authCredential)
+          .then((r) => right(unit));
+    } on PlatformException catch (_) {
+      return left(const AuthFailure.serverError());
+    }
   }
 }
