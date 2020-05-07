@@ -22,7 +22,9 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
   SignInFormState get initialState => SignInFormState.initial();
 
   @override
-  Stream<SignInFormState> mapEventToState(SignInFormEvent event,) async* {
+  Stream<SignInFormState> mapEventToState(
+    SignInFormEvent event,
+  ) async* {
     yield* event.map(
       emailChanged: (e) async* {
         yield state.copyWith(
@@ -61,16 +63,24 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
     );
   }
 
-  Stream<SignInFormState> _performActionOnAuthFacadeWithEmailAndPassword(
+  Stream<SignInFormState> _performActionOnAuthFacadeWithEmailAndPassword
+
+  (
 
   Future<Either<AuthFailure, Unit>> Function({
     @required EmailAddress emailAddress,
     @required Password password,
   })
 
-  forwardedCall,
+  forwardedCall
 
-  ) async* {
+  ,
+
+  )
+
+  async
+
+  * {
   Either<AuthFailure, Unit> failureOrSuccess;
 
   final isEmailValid = state.emailAddress.isValid();
