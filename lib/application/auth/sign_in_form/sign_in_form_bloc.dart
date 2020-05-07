@@ -63,44 +63,33 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
     );
   }
 
-  Stream<SignInFormState> _performActionOnAuthFacadeWithEmailAndPassword
+  Stream<SignInFormState> _performActionOnAuthFacadeWithEmailAndPassword(
+    Future<Either<AuthFailure, Unit>> Function({
+      @required EmailAddress emailAddress,
+      @required Password password,
+    })
+        forwardedCall,
+  ) async* {
+    Either<AuthFailure, Unit> failureOrSuccess;
 
-  (
+    final isEmailValid = state.emailAddress.isValid();
+    final isPasswordValid = state.password.isValid();
 
-  Future<Either<AuthFailure, Unit>> Function({
-    @required EmailAddress emailAddress,
-    @required Password password,
-  })
+    if (isEmailValid && isPasswordValid) {
+      yield state.copyWith(
+        isSubmitting: true,
+        authFailureOrSuccessOption: none(),
+      );
 
-  forwardedCall
-
-  ,
-
-  )
-
-  async
-
-  * {
-  Either<AuthFailure, Unit> failureOrSuccess;
-
-  final isEmailValid = state.emailAddress.isValid();
-  final isPasswordValid = state.password.isValid();
-
-  if (isEmailValid && isPasswordValid) {
-  yield state.copyWith(
-  isSubmitting: true,
-  authFailureOrSuccessOption: none(),
-  );
-
-  failureOrSuccess = await forwardedCall(
-  emailAddress: state.emailAddress,
-  password: state.password,
-  );
-  }
-  yield state.copyWith(
-  isSubmitting: false,
-  showErrorMessages: true,
-  authFailureOrSuccessOption: optionOf(failureOrSuccess),
-  );
+      failureOrSuccess = await forwardedCall(
+        emailAddress: state.emailAddress,
+        password: state.password,
+      );
+    }
+    yield state.copyWith(
+      isSubmitting: false,
+      showErrorMessages: true,
+      authFailureOrSuccessOption: optionOf(failureOrSuccess),
+    );
   }
 }
