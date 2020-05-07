@@ -6,11 +6,13 @@ import 'package:ddd_notes/domain/auth/i_auth_facade.dart';
 import 'package:ddd_notes/domain/auth/value_objects.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 
 part 'sign_in_form_bloc.freezed.dart';
 part 'sign_in_form_event.dart';
 part 'sign_in_form_state.dart';
 
+@injectable
 class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
   final IAuthFacade _authFacade;
 
@@ -20,9 +22,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
   SignInFormState get initialState => SignInFormState.initial();
 
   @override
-  Stream<SignInFormState> mapEventToState(
-    SignInFormEvent event,
-  ) async* {
+  Stream<SignInFormState> mapEventToState(SignInFormEvent event,) async* {
     yield* event.map(
       emailChanged: (e) async* {
         yield state.copyWith(
@@ -62,32 +62,35 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
   }
 
   Stream<SignInFormState> _performActionOnAuthFacadeWithEmailAndPassword(
-    Future<Either<AuthFailure, Unit>> Function({
-      @required EmailAddress emailAddress,
-      @required Password password,
-    })
-        forwardedCall,
+
+  Future<Either<AuthFailure, Unit>> Function({
+    @required EmailAddress emailAddress,
+    @required Password password,
+  })
+
+  forwardedCall,
+
   ) async* {
-    Either<AuthFailure, Unit> failureOrSuccess;
+  Either<AuthFailure, Unit> failureOrSuccess;
 
-    final isEmailValid = state.emailAddress.isValid();
-    final isPasswordValid = state.password.isValid();
+  final isEmailValid = state.emailAddress.isValid();
+  final isPasswordValid = state.password.isValid();
 
-    if (isEmailValid && isPasswordValid) {
-      yield state.copyWith(
-        isSubmitting: true,
-        authFailureOrSuccessOption: none(),
-      );
+  if (isEmailValid && isPasswordValid) {
+  yield state.copyWith(
+  isSubmitting: true,
+  authFailureOrSuccessOption: none(),
+  );
 
-      failureOrSuccess = await forwardedCall(
-        emailAddress: state.emailAddress,
-        password: state.password,
-      );
-    }
-    yield state.copyWith(
-      isSubmitting: false,
-      showErrorMessages: true,
-      authFailureOrSuccessOption: optionOf(failureOrSuccess),
-    );
+  failureOrSuccess = await forwardedCall(
+  emailAddress: state.emailAddress,
+  password: state.password,
+  );
+  }
+  yield state.copyWith(
+  isSubmitting: false,
+  showErrorMessages: true,
+  authFailureOrSuccessOption: optionOf(failureOrSuccess),
+  );
   }
 }
