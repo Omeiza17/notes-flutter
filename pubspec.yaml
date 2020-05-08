@@ -19,6 +19,7 @@ dependencies:
   get_it: ^4.0.2
   injectable: ^0.3.0
   cloud_firestore: ^0.13.5
+  flushbar: ^1.10.2
 
 dev_dependencies:
   build_runner:
