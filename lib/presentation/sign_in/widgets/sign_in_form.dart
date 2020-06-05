@@ -32,6 +32,7 @@ class SignInForm extends StatelessWidget {
         return Form(
           autovalidate: state.showErrorMessages,
           child: ListView(
+            padding: const EdgeInsets.all(8.0),
             children: [
               const Text(
                 '📝',
@@ -56,11 +57,11 @@ class SignInForm extends StatelessWidget {
                     .value
                     .fold(
                       (f) => f.maybeMap(
-                        invalidEmail: (_) => 'Invalid email',
-                        orElse: () => null,
-                      ),
+                    invalidEmail: (_) => 'Invalid email',
+                    orElse: () => null,
+                  ),
                       (_) => null,
-                    ),
+                ),
               ),
               const SizedBox(height: 8.0),
               // Password
@@ -77,11 +78,11 @@ class SignInForm extends StatelessWidget {
                 validator: (_) =>
                     context.bloc<SignInFormBloc>().state.password.value.fold(
                           (f) => f.maybeMap(
-                            orElse: () => null,
-                            shortPassword: (_) => 'Short Password',
-                          ),
+                        orElse: () => null,
+                        shortPassword: (_) => 'Short Password',
+                      ),
                           (_) => null,
-                        ),
+                    ),
               ),
               const SizedBox(height: 8.0),
               Row(
@@ -90,9 +91,9 @@ class SignInForm extends StatelessWidget {
                     child: FlatButton(
                       onPressed: () {
                         context.bloc<SignInFormBloc>().add(
-                              const SignInFormEvent
-                                  .signInWithEmailAndPasswordPressed(),
-                            );
+                          const SignInFormEvent
+                              .signInWithEmailAndPasswordPressed(),
+                        );
                       },
                       child: const Text('SIGN IN'),
                     ),
@@ -101,9 +102,9 @@ class SignInForm extends StatelessWidget {
                     child: FlatButton(
                       onPressed: () {
                         context.bloc<SignInFormBloc>().add(
-                              const SignInFormEvent
-                                  .registerWithEmailAndPasswordPressed(),
-                            );
+                          const SignInFormEvent
+                              .registerWithEmailAndPasswordPressed(),
+                        );
                       },
                       child: const Text('REGISTER'),
                     ),
@@ -125,7 +126,11 @@ class SignInForm extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-              )
+              ),
+              if (state.isSubmitting) ...[
+                const SizedBox(height: 8.0),
+                const LinearProgressIndicator(),
+              ],
             ],
           ),
         );
