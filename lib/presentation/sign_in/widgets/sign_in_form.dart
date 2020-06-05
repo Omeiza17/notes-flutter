@@ -72,24 +72,17 @@ class SignInForm extends StatelessWidget {
                   labelText: 'Password',
                   prefixIcon: Icon(Icons.lock),
                 ),
-                onChanged: (value) =>
-                    context
-                        .bloc<SignInFormBloc>()
-                        .add(SignInFormEvent.passwordChanged(value)),
+                onChanged: (value) => context
+                    .bloc<SignInFormBloc>()
+                    .add(SignInFormEvent.passwordChanged(value)),
                 validator: (_) =>
-                    context
-                        .bloc<SignInFormBloc>()
-                        .state
-                        .password
-                        .value
-                        .fold(
-                          (f) =>
-                          f.maybeMap(
+                    context.bloc<SignInFormBloc>().state.password.value.fold(
+                          (f) => f.maybeMap(
                             orElse: () => null,
                             shortPassword: (_) => 'Short Password',
                           ),
                           (_) => null,
-                    ),
+                        ),
               ),
               const SizedBox(height: 8.0),
               Row(
