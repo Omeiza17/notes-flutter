@@ -102,9 +102,9 @@ class SignInForm extends StatelessWidget {
                     child: FlatButton(
                       onPressed: () {
                         context.bloc<SignInFormBloc>().add(
-                          const SignInFormEvent
-                              .registerWithEmailAndPasswordPressed(),
-                        );
+                              const SignInFormEvent
+                                  .registerWithEmailAndPasswordPressed(),
+                            );
                       },
                       child: const Text('REGISTER'),
                     ),
