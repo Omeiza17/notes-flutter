@@ -131,7 +131,6 @@ abstract class $ExceedingLengthCopyWith<T, $Res>
   factory $ExceedingLengthCopyWith(
           ExceedingLength<T> value, $Res Function(ExceedingLength<T>) then) =
       _$ExceedingLengthCopyWithImpl<T, $Res>;
-
   @override
   $Res call({T failedValue, int maxLength});
 }
@@ -279,9 +278,7 @@ abstract class ExceedingLength<T> implements ValueFailure<T> {
 
   @override
   T get failedValue;
-
   int get maxLength;
-
   @override
   $ExceedingLengthCopyWith<T, ExceedingLength<T>> get copyWith;
 }
@@ -291,7 +288,6 @@ abstract class $ListTooLongCopyWith<T, $Res>
   factory $ListTooLongCopyWith(
           ListTooLong<T> value, $Res Function(ListTooLong<T>) then) =
       _$ListTooLongCopyWithImpl<T, $Res>;
-
   @override
   $Res call({T failedValue, int max});
 }
@@ -436,9 +432,7 @@ abstract class ListTooLong<T> implements ValueFailure<T> {
 
   @override
   T get failedValue;
-
   int get max;
-
   @override
   $ListTooLongCopyWith<T, ListTooLong<T>> get copyWith;
 }
@@ -447,7 +441,6 @@ abstract class $EmptyCopyWith<T, $Res>
     implements $ValueFailureCopyWith<T, $Res> {
   factory $EmptyCopyWith(Empty<T> value, $Res Function(Empty<T>) then) =
       _$EmptyCopyWithImpl<T, $Res>;
-
   @override
   $Res call({T failedValue});
 }
@@ -579,7 +572,6 @@ abstract class Empty<T> implements ValueFailure<T> {
 
   @override
   T get failedValue;
-
   @override
   $EmptyCopyWith<T, Empty<T>> get copyWith;
 }
@@ -589,7 +581,6 @@ abstract class $MultlineCopyWith<T, $Res>
   factory $MultlineCopyWith(
           Multline<T> value, $Res Function(Multline<T>) then) =
       _$MultlineCopyWithImpl<T, $Res>;
-
   @override
   $Res call({T failedValue});
 }
@@ -722,7 +713,6 @@ abstract class Multline<T> implements ValueFailure<T> {
 
   @override
   T get failedValue;
-
   @override
   $MultlineCopyWith<T, Multline<T>> get copyWith;
 }
@@ -732,7 +722,6 @@ abstract class $InvalidEmailCopyWith<T, $Res>
   factory $InvalidEmailCopyWith(
           InvalidEmail<T> value, $Res Function(InvalidEmail<T>) then) =
       _$InvalidEmailCopyWithImpl<T, $Res>;
-
   @override
   $Res call({T failedValue});
 }
