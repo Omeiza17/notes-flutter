@@ -9,7 +9,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kt_dart/kt.dart';
 
 part 'note_dtos.freezed.dart';
-
 part 'note_dtos.g.dart';
 
 @freezed
