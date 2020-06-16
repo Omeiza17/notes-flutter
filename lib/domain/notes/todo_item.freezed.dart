@@ -27,9 +27,7 @@ const $TodoItem = _$TodoItemTearOff();
 
 mixin _$TodoItem {
   UniqueId get id;
-
   TodoName get name;
-
   bool get done;
 
   $TodoItemCopyWith<TodoItem> get copyWith;
@@ -38,7 +36,6 @@ mixin _$TodoItem {
 abstract class $TodoItemCopyWith<$Res> {
   factory $TodoItemCopyWith(TodoItem value, $Res Function(TodoItem) then) =
       _$TodoItemCopyWithImpl<$Res>;
-
   $Res call({UniqueId id, TodoName name, bool done});
 }
 
@@ -46,7 +43,6 @@ class _$TodoItemCopyWithImpl<$Res> implements $TodoItemCopyWith<$Res> {
   _$TodoItemCopyWithImpl(this._value, this._then);
 
   final TodoItem _value;
-
   // ignore: unused_field
   final $Res Function(TodoItem) _then;
 
@@ -67,7 +63,6 @@ class _$TodoItemCopyWithImpl<$Res> implements $TodoItemCopyWith<$Res> {
 abstract class _$TodoItemCopyWith<$Res> implements $TodoItemCopyWith<$Res> {
   factory _$TodoItemCopyWith(_TodoItem value, $Res Function(_TodoItem) then) =
       __$TodoItemCopyWithImpl<$Res>;
-
   @override
   $Res call({UniqueId id, TodoName name, bool done});
 }
@@ -140,7 +135,6 @@ class _$_TodoItem extends _TodoItem {
 
 abstract class _TodoItem extends TodoItem {
   const _TodoItem._() : super._();
-
   const factory _TodoItem(
       {@required UniqueId id,
       @required TodoName name,
@@ -148,13 +142,10 @@ abstract class _TodoItem extends TodoItem {
 
   @override
   UniqueId get id;
-
   @override
   TodoName get name;
-
   @override
   bool get done;
-
   @override
   _$TodoItemCopyWith<_TodoItem> get copyWith;
 }

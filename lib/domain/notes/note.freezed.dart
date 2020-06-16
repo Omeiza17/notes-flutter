@@ -31,11 +31,8 @@ const $Note = _$NoteTearOff();
 
 mixin _$Note {
   UniqueId get id;
-
   NoteBody get body;
-
   NoteColor get color;
-
   ListThree<TodoItem> get todos;
 
   $NoteCopyWith<Note> get copyWith;
@@ -44,7 +41,6 @@ mixin _$Note {
 abstract class $NoteCopyWith<$Res> {
   factory $NoteCopyWith(Note value, $Res Function(Note) then) =
       _$NoteCopyWithImpl<$Res>;
-
   $Res call(
       {UniqueId id, NoteBody body, NoteColor color, ListThree<TodoItem> todos});
 }
@@ -53,7 +49,6 @@ class _$NoteCopyWithImpl<$Res> implements $NoteCopyWith<$Res> {
   _$NoteCopyWithImpl(this._value, this._then);
 
   final Note _value;
-
   // ignore: unused_field
   final $Res Function(Note) _then;
 
@@ -76,7 +71,6 @@ class _$NoteCopyWithImpl<$Res> implements $NoteCopyWith<$Res> {
 abstract class _$NoteCopyWith<$Res> implements $NoteCopyWith<$Res> {
   factory _$NoteCopyWith(_Note value, $Res Function(_Note) then) =
       __$NoteCopyWithImpl<$Res>;
-
   @override
   $Res call(
       {UniqueId id, NoteBody body, NoteColor color, ListThree<TodoItem> todos});
@@ -161,7 +155,6 @@ class _$_Note extends _Note {
 
 abstract class _Note extends Note {
   const _Note._() : super._();
-
   const factory _Note(
       {@required UniqueId id,
       @required NoteBody body,
@@ -170,16 +163,12 @@ abstract class _Note extends Note {
 
   @override
   UniqueId get id;
-
   @override
   NoteBody get body;
-
   @override
   NoteColor get color;
-
   @override
   ListThree<TodoItem> get todos;
-
   @override
   _$NoteCopyWith<_Note> get copyWith;
 }
