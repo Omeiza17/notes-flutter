@@ -10,6 +10,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:ddd_notes/infrastructure/auth/firebase_auth_facade.dart';
 import 'package:ddd_notes/domain/auth/i_auth_facade.dart';
+import 'package:ddd_notes/application/notes/actor/note_actor_bloc.dart';
+import 'package:ddd_notes/domain/notes/i_note_repository.dart';
+import 'package:ddd_notes/application/notes/watcher/note_watcher_bloc.dart';
 import 'package:ddd_notes/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:ddd_notes/application/auth/auth_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -23,6 +26,9 @@ void $initGetIt(GetIt g, {String environment}) {
       () => firebaseInjectableModule.googleSignIn);
   g.registerLazySingleton<IAuthFacade>(
       () => FirebaseAuthFacade(g<FirebaseAuth>(), g<GoogleSignIn>()));
+  g.registerFactory<NoteActorBloc>(() => NoteActorBloc(g<INoteRepository>()));
+  g.registerFactory<NoteWatcherBloc>(
+      () => NoteWatcherBloc(g<INoteRepository>()));
   g.registerFactory<SignInFormBloc>(() => SignInFormBloc(g<IAuthFacade>()));
   g.registerFactory<AuthBloc>(() => AuthBloc(g<IAuthFacade>()));
 }
