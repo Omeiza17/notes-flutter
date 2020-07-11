@@ -7,6 +7,7 @@ import 'package:ddd_notes/domain/notes/note.dart';
 import 'package:ddd_notes/domain/notes/note_failure.dart';
 import 'package:ddd_notes/domain/notes/value_objects.dart';
 import 'package:ddd_notes/presentation/notes/note_form/misc/todo_item_presentation_classes.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -20,10 +21,7 @@ part 'note_form_state.dart';
 class NoteFormBloc extends Bloc<NoteFormEvent, NoteFormState> {
   final INoteRepository _noteRepository;
 
-  NoteFormBloc(this._noteRepository);
-
-  @override
-  NoteFormState get initialState => NoteFormState.initial();
+  NoteFormBloc(this._noteRepository) : super(NoteFormState.initial());
 
   @override
   Stream<NoteFormState> mapEventToState(
