@@ -3,6 +3,7 @@ import 'package:ddd_notes/application/auth/auth_bloc.dart';
 import 'package:ddd_notes/application/notes/actor/note_actor_bloc.dart';
 import 'package:ddd_notes/application/notes/watcher/note_watcher_bloc.dart';
 import 'package:ddd_notes/injection.dart';
+import 'package:ddd_notes/presentation/notes/note_overview/widgets/note_overview_body.dart';
 import 'package:ddd_notes/presentation/routes/router.gr.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
@@ -70,6 +71,7 @@ class NoteOverviewPage extends StatelessWidget {
               )
             ],
           ),
+          body: const NoteOverviewBody(),
           floatingActionButton: FloatingActionButton(
             onPressed: () {
               // TODO: navigate to note form page

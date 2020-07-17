@@ -27,22 +27,26 @@ class NoteWatcherBloc extends Bloc<NoteWatcherEvent, NoteWatcherState> {
     NoteWatcherEvent event,
   ) async* {
     yield* event.map(
-      watchAllStarted: (_WatchAllStarted event) async* {
+      watchAllStarted: (e) async* {
         yield const NoteWatcherState.loadInProgress();
         await _noteStreamSubscription?.cancel();
         _noteStreamSubscription = _noteRepository.watchAll().listen(
-            (failureOrNotes) => NoteWatcherEvent.notesReceived(failureOrNotes));
+              (failureOrNotes) =>
+                  add(NoteWatcherEvent.notesReceived(failureOrNotes)),
+            );
       },
-      watchUncompletedStarted: (_WatchUncompletedStarted event) async* {
+      watchUncompletedStarted: (e) async* {
         yield const NoteWatcherState.loadInProgress();
         await _noteStreamSubscription?.cancel();
         _noteStreamSubscription = _noteRepository.watchUncompleted().listen(
-            (failureOrNotes) => NoteWatcherEvent.notesReceived(failureOrNotes));
+              (failureOrNotes) =>
+                  add(NoteWatcherEvent.notesReceived(failureOrNotes)),
+            );
       },
-      notesReceived: (_NotesReceived event) async* {
-        yield event.failureOrNotes.fold(
-          (NoteFailure failure) => NoteWatcherState.loadFailure(failure),
-          (KtList<Note> notes) => NoteWatcherState.loadSuccess(notes),
+      notesReceived: (e) async* {
+        yield e.failureOrNotes.fold(
+          (f) => NoteWatcherState.loadFailure(f),
+          (notes) => NoteWatcherState.loadSuccess(notes),
         );
       },
     );
