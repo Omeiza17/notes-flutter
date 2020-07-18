@@ -4,6 +4,7 @@ import 'package:ddd_notes/injection.dart';
 import 'package:ddd_notes/presentation/routes/router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppWidget extends StatelessWidget {
   @override
@@ -19,6 +20,7 @@ class AppWidget extends StatelessWidget {
         title: 'Notes',
         debugShowCheckedModeBanner: false,
         theme: ThemeData.light().copyWith(
+          textTheme: GoogleFonts.nunitoTextTheme(),
           primaryColor: Colors.green.shade800,
           accentColor: Colors.greenAccent,
           floatingActionButtonTheme: FloatingActionButtonThemeData(
