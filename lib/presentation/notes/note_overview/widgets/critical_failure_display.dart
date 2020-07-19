@@ -26,7 +26,6 @@ class CriticalFailureDisplay extends StatelessWidget {
           ),
           FlatButton(
             onPressed: () {
-              print('Sending Email');
             },
             child: Row(
               mainAxisSize: MainAxisSize.min,
