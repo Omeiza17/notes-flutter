@@ -25,8 +25,7 @@ class CriticalFailureDisplay extends StatelessWidget {
             style: Theme.of(context).textTheme.headline5,
           ),
           FlatButton(
-            onPressed: () {
-            },
+            onPressed: () {},
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: const <Widget>[
