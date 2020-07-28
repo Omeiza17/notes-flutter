@@ -4,6 +4,7 @@ import 'package:ddd_notes/application/notes/actor/note_actor_bloc.dart';
 import 'package:ddd_notes/application/notes/watcher/note_watcher_bloc.dart';
 import 'package:ddd_notes/injection.dart';
 import 'package:ddd_notes/presentation/notes/note_overview/widgets/note_overview_body.dart';
+import 'package:ddd_notes/presentation/notes/note_overview/widgets/uncompleted_switch.dart';
 import 'package:ddd_notes/presentation/routes/router.gr.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
@@ -27,8 +28,8 @@ class NoteOverviewPage extends StatelessWidget {
           BlocListener<AuthBloc, AuthState>(
             listener: (context, state) {
               state.maybeMap(
-                unauthenticated: (_) => ExtendedNavigator.of(context)
-                    .pushReplacementNamed(Routes.signInPage),
+                unauthenticated: (_) =>
+                    ExtendedNavigator.of(context).pushSignInPage(),
                 orElse: () {},
               );
             },
@@ -64,11 +65,8 @@ class NoteOverviewPage extends StatelessWidget {
                 context.bloc<AuthBloc>().add(const AuthEvent.signedOut());
               },
             ),
-            actions: <Widget>[
-              IconButton(
-                icon: Icon(Icons.indeterminate_check_box),
-                onPressed: () {},
-              )
+            actions: const <Widget>[
+              UncompletedSwitch(),
             ],
           ),
           body: const NoteOverviewBody(),
