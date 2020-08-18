@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:ddd_notes/application/notes/actor/note_actor_bloc.dart';
 import 'package:ddd_notes/domain/notes/note.dart';
 import 'package:ddd_notes/domain/notes/todo_item.dart';
+import 'package:ddd_notes/presentation/routes/router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kt_dart/kt.dart';
@@ -21,7 +23,7 @@ class NoteCard extends StatelessWidget {
           _showDeletionDialog(context, noteActorBloc);
         },
         onTap: () {
-          // TODO: Implement navigation
+          ExtendedNavigator.of(context).pushNoteFormPage(editedNote: note);
         },
         child: Padding(
           padding: const EdgeInsets.all(8.0),
