@@ -49,7 +49,7 @@ class SignInForm extends StatelessWidget {
               // Email
               TextFormField(
                 autocorrect: false,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Email',
                   prefixIcon: Icon(Icons.email),
                 ),

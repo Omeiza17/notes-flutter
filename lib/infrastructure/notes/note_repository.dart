@@ -12,7 +12,7 @@ import 'package:rxdart/rxdart.dart';
 
 @LazySingleton(as: INoteRepository)
 class NoteRepository implements INoteRepository {
-  final Firestore _firestore;
+  final FirebaseFirestore _firestore;
 
   NoteRepository(this._firestore);
 
@@ -23,7 +23,7 @@ class NoteRepository implements INoteRepository {
         .orderBy('serverTimeStamp', descending: true)
         .snapshots()
         .map((QuerySnapshot snapshot) => right<NoteFailure, KtList<Note>>(
-            snapshot.documents
+            snapshot.docs
                 .map((doc) => NoteDTO.fromFirestore(doc).toDomain())
                 .toImmutableList()))
         .onErrorReturnWith((e) {
@@ -41,8 +41,8 @@ class NoteRepository implements INoteRepository {
     yield* userDoc.noteCollection
         .orderBy('serverTimeStamp', descending: true)
         .snapshots()
-        .map((QuerySnapshot snapshot) => snapshot.documents
-            .map((doc) => NoteDTO.fromFirestore(doc).toDomain()))
+        .map((QuerySnapshot snapshot) =>
+            snapshot.docs.map((doc) => NoteDTO.fromFirestore(doc).toDomain()))
         .map((notes) => right<NoteFailure, KtList<Note>>(notes
             .where((note) =>
                 note.todos.getOrCrash().any((todoItem) => !todoItem.done))
@@ -61,9 +61,7 @@ class NoteRepository implements INoteRepository {
     try {
       final DocumentReference userDoc = await _firestore.userDocument();
       final NoteDTO noteDTO = NoteDTO.fromDomain(note);
-      await userDoc.noteCollection
-          .document(noteDTO.id)
-          .setData(noteDTO.toJson());
+      await userDoc.noteCollection.doc(noteDTO.id).set(noteDTO.toJson());
 
       return right(unit);
     } on PlatformException catch (e) {
@@ -80,9 +78,7 @@ class NoteRepository implements INoteRepository {
     try {
       final DocumentReference userDoc = await _firestore.userDocument();
       final NoteDTO noteDTO = NoteDTO.fromDomain(note);
-      await userDoc.noteCollection
-          .document(noteDTO.id)
-          .updateData(noteDTO.toJson());
+      await userDoc.noteCollection.doc(noteDTO.id).update(noteDTO.toJson());
 
       return right(unit);
     } on PlatformException catch (e) {
@@ -101,7 +97,7 @@ class NoteRepository implements INoteRepository {
     try {
       final DocumentReference userDoc = await _firestore.userDocument();
       final noteId = note.id.getOrCrash();
-      await userDoc.noteCollection.document(noteId).delete();
+      await userDoc.noteCollection.doc(noteId).delete();
 
       return right(unit);
     } on PlatformException catch (e) {
