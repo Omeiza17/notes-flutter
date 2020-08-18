@@ -39,7 +39,6 @@ class NoteCard extends StatelessWidget {
                 const SizedBox(height: 4),
                 Wrap(
                   spacing: 8,
-                  direction: Axis.horizontal,
                   children: <Widget>[
                     ...note.todos
                         .getOrCrash()

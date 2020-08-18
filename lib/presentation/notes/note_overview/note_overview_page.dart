@@ -60,7 +60,7 @@ class NoteOverviewPage extends StatelessWidget {
             centerTitle: true,
             elevation: 0,
             leading: IconButton(
-              icon: Icon(Icons.exit_to_app),
+              icon: const Icon(Icons.exit_to_app),
               onPressed: () {
                 context.bloc<AuthBloc>().add(const AuthEvent.signedOut());
               },
@@ -74,7 +74,7 @@ class NoteOverviewPage extends StatelessWidget {
             onPressed: () {
               // TODO: navigate to note form page
             },
-            child: Icon(Icons.add),
+            child: const Icon(Icons.add),
           ),
         ),
       ),

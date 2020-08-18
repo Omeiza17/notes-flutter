@@ -74,7 +74,7 @@ class SignInForm extends StatelessWidget {
               TextFormField(
                 obscureText: true,
                 autocorrect: false,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Password',
                   prefixIcon: Icon(Icons.lock),
                 ),
