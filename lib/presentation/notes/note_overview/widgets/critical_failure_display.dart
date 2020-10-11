@@ -34,7 +34,7 @@ class CriticalFailureDisplay extends StatelessWidget {
                 Text('I NEED HELP'),
               ],
             ),
-          )
+          ),
         ],
       ),
     );

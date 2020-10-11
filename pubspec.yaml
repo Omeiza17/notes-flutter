@@ -1,7 +1,7 @@
 name: ddd_notes
 description: A notes application using Firebase following a domain-driven-design pattern
 
-version: 1.0.0+1
+version: 0.0.1
 
 environment:
   sdk: ">=2.8.0 <3.0.0"
@@ -9,33 +9,33 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  uuid: ^2.2.0
-  dartz: ^0.9.1
-  get_it: ^4.0.4
-  logger: ^0.9.2
+  uuid: ^2.2.2
+  dartz: ^0.9.2
+  get_it: ^5.0.1
+  logger: ^0.9.4
   rxdart: ^0.24.1
   flushbar: ^1.10.4
-  kt_dart: ^0.7.0+1
-  auto_route: ^0.6.7
-  injectable: ^1.0.4
-  flutter_bloc: ^6.0.1
+  kt_dart: ^0.8.0
+  auto_route: ^0.6.9
+  injectable: ^1.0.5
+  flutter_bloc: ^6.0.6
   google_fonts: ^1.1.0
-  firebase_core: ^0.5.0
-  firebase_auth: ^0.18.0
-  flutter_hooks: ^0.13.1
-  google_sign_in: ^4.5.1
-  json_annotation: ^3.0.1
-  cupertino_icons: ^0.1.3
-  cloud_firestore: ^0.14.0
-  freezed_annotation: ^0.11.0+1
+  firebase_core: ^0.5.0+1
+  firebase_auth: ^0.18.1+2
+  flutter_hooks: ^0.14.1
+  google_sign_in: ^4.5.4
+  json_annotation: ^3.1.0
+  cupertino_icons: ^1.0.0
+  cloud_firestore: ^0.14.1+3
+  freezed_annotation: ^0.12.0
 
 dev_dependencies:
   build_runner:
-  lint: ^1.2.0
-  freezed: ^0.11.5
-  json_serializable: ^3.4.0
-  injectable_generator: ^1.0.4
-  auto_route_generator: ^0.6.8
+  lint: ^1.3.0
+  freezed: ^0.12.1
+  json_serializable: ^3.5.0
+  injectable_generator: ^1.0.5
+  auto_route_generator: ^0.6.9
 
 flutter:
   uses-material-design: true

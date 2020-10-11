@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:ddd_notes/application/auth/auth_bloc.dart';
 import 'package:ddd_notes/injection.dart';
-import 'package:ddd_notes/presentation/routes/router.gr.dart';
+import 'package:ddd_notes/presentation/routes/router.gr.dart' as router;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -32,8 +32,8 @@ class AppWidget extends StatelessWidget {
             ),
           ),
         ),
-        builder: ExtendedNavigator<Router>(
-          router: Router(),
+        builder: ExtendedNavigator<router.Router>(
+          router: router.Router(),
         ),
       ),
     );
