@@ -35,7 +35,7 @@ class ColorField extends StatelessWidget {
                             : BorderSide.none,
                       ),
                     ),
-                    child: Container(
+                    child: const SizedBox(
                       width: 50,
                       height: 50,
                     ),

@@ -12,6 +12,7 @@ NoteDTO _$NoteDTOFromJson(Map<String, dynamic> json) {
   return _NoteDTO.fromJson(json);
 }
 
+/// @nodoc
 class _$NoteDTOTearOff {
   const _$NoteDTOTearOff();
 
@@ -20,8 +21,8 @@ class _$NoteDTOTearOff {
       {@JsonKey(ignore: true) String id,
       @required String body,
       @required int color,
-      @required List<TodoItemDTO> todos,
-      @required @ServerTimestampConverter() FieldValue serverTimeStamp}) {
+        @required List<TodoItemDTO> todos,
+        @required @ServerTimestampConverter() FieldValue serverTimeStamp}) {
     return _NoteDTO(
       id: id,
       body: body,
@@ -30,11 +31,18 @@ class _$NoteDTOTearOff {
       serverTimeStamp: serverTimeStamp,
     );
   }
+
+// ignore: unused_element
+  NoteDTO fromJson(Map<String, Object> json) {
+    return NoteDTO.fromJson(json);
+  }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $NoteDTO = _$NoteDTOTearOff();
 
+/// @nodoc
 mixin _$NoteDTO {
   @JsonKey(ignore: true)
   String get id;
@@ -48,6 +56,7 @@ mixin _$NoteDTO {
   $NoteDTOCopyWith<NoteDTO> get copyWith;
 }
 
+/// @nodoc
 abstract class $NoteDTOCopyWith<$Res> {
   factory $NoteDTOCopyWith(NoteDTO value, $Res Function(NoteDTO) then) =
       _$NoteDTOCopyWithImpl<$Res>;
@@ -59,6 +68,7 @@ abstract class $NoteDTOCopyWith<$Res> {
       @ServerTimestampConverter() FieldValue serverTimeStamp});
 }
 
+/// @nodoc
 class _$NoteDTOCopyWithImpl<$Res> implements $NoteDTOCopyWith<$Res> {
   _$NoteDTOCopyWithImpl(this._value, this._then);
 
@@ -86,6 +96,7 @@ class _$NoteDTOCopyWithImpl<$Res> implements $NoteDTOCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$NoteDTOCopyWith<$Res> implements $NoteDTOCopyWith<$Res> {
   factory _$NoteDTOCopyWith(_NoteDTO value, $Res Function(_NoteDTO) then) =
       __$NoteDTOCopyWithImpl<$Res>;
@@ -98,6 +109,7 @@ abstract class _$NoteDTOCopyWith<$Res> implements $NoteDTOCopyWith<$Res> {
       @ServerTimestampConverter() FieldValue serverTimeStamp});
 }
 
+/// @nodoc
 class __$NoteDTOCopyWithImpl<$Res> extends _$NoteDTOCopyWithImpl<$Res>
     implements _$NoteDTOCopyWith<$Res> {
   __$NoteDTOCopyWithImpl(_NoteDTO _value, $Res Function(_NoteDTO) _then)
@@ -127,13 +139,13 @@ class __$NoteDTOCopyWithImpl<$Res> extends _$NoteDTOCopyWithImpl<$Res>
 }
 
 @JsonSerializable()
-class _$_NoteDTO extends _NoteDTO {
-  const _$_NoteDTO(
-      {@JsonKey(ignore: true) this.id,
-      @required this.body,
-      @required this.color,
-      @required this.todos,
-      @required @ServerTimestampConverter() this.serverTimeStamp})
+
+/// @nodoc class _$_NoteDTO extends _NoteDTO {
+  const _$_NoteDTO({@JsonKey(ignore: true) this.id,
+    @required this.body,
+    @required this.color,
+    @required this.todos,
+    @required @ServerTimestampConverter() this.serverTimeStamp})
       : assert(body != null),
         assert(color != null),
         assert(todos != null),
@@ -229,6 +241,7 @@ TodoItemDTO _$TodoItemDTOFromJson(Map<String, dynamic> json) {
   return _TodoItemDTO.fromJson(json);
 }
 
+/// @nodoc
 class _$TodoItemDTOTearOff {
   const _$TodoItemDTOTearOff();
 
@@ -241,20 +254,30 @@ class _$TodoItemDTOTearOff {
       done: done,
     );
   }
+
+// ignore: unused_element
+  TodoItemDTO fromJson(Map<String, Object> json) {
+    return TodoItemDTO.fromJson(json);
+  }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $TodoItemDTO = _$TodoItemDTOTearOff();
 
+/// @nodoc
 mixin _$TodoItemDTO {
   String get id;
+
   String get name;
+
   bool get done;
 
   Map<String, dynamic> toJson();
   $TodoItemDTOCopyWith<TodoItemDTO> get copyWith;
 }
 
+/// @nodoc
 abstract class $TodoItemDTOCopyWith<$Res> {
   factory $TodoItemDTOCopyWith(
           TodoItemDTO value, $Res Function(TodoItemDTO) then) =
@@ -262,6 +285,7 @@ abstract class $TodoItemDTOCopyWith<$Res> {
   $Res call({String id, String name, bool done});
 }
 
+/// @nodoc
 class _$TodoItemDTOCopyWithImpl<$Res> implements $TodoItemDTOCopyWith<$Res> {
   _$TodoItemDTOCopyWithImpl(this._value, this._then);
 
@@ -283,6 +307,7 @@ class _$TodoItemDTOCopyWithImpl<$Res> implements $TodoItemDTOCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$TodoItemDTOCopyWith<$Res>
     implements $TodoItemDTOCopyWith<$Res> {
   factory _$TodoItemDTOCopyWith(
@@ -292,6 +317,7 @@ abstract class _$TodoItemDTOCopyWith<$Res>
   $Res call({String id, String name, bool done});
 }
 
+/// @nodoc
 class __$TodoItemDTOCopyWithImpl<$Res> extends _$TodoItemDTOCopyWithImpl<$Res>
     implements _$TodoItemDTOCopyWith<$Res> {
   __$TodoItemDTOCopyWithImpl(
@@ -316,7 +342,8 @@ class __$TodoItemDTOCopyWithImpl<$Res> extends _$TodoItemDTOCopyWithImpl<$Res>
 }
 
 @JsonSerializable()
-class _$_TodoItemDTO extends _TodoItemDTO {
+
+/// @nodoc class _$_TodoItemDTO extends _TodoItemDTO {
   const _$_TodoItemDTO(
       {@required this.id, @required this.name, @required this.done})
       : assert(id != null),
