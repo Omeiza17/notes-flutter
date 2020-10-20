@@ -21,8 +21,8 @@ class _$NoteDTOTearOff {
       {@JsonKey(ignore: true) String id,
       @required String body,
       @required int color,
-        @required List<TodoItemDTO> todos,
-        @required @ServerTimestampConverter() FieldValue serverTimeStamp}) {
+      @required List<TodoItemDTO> todos,
+      @required @ServerTimestampConverter() FieldValue serverTimeStamp}) {
     return _NoteDTO(
       id: id,
       body: body,
@@ -140,12 +140,14 @@ class __$NoteDTOCopyWithImpl<$Res> extends _$NoteDTOCopyWithImpl<$Res>
 
 @JsonSerializable()
 
-/// @nodoc class _$_NoteDTO extends _NoteDTO {
-  const _$_NoteDTO({@JsonKey(ignore: true) this.id,
-    @required this.body,
-    @required this.color,
-    @required this.todos,
-    @required @ServerTimestampConverter() this.serverTimeStamp})
+/// @nodoc
+class _$_NoteDTO extends _NoteDTO {
+  const _$_NoteDTO(
+      {@JsonKey(ignore: true) this.id,
+      @required this.body,
+      @required this.color,
+      @required this.todos,
+      @required @ServerTimestampConverter() this.serverTimeStamp})
       : assert(body != null),
         assert(color != null),
         assert(todos != null),
@@ -268,9 +270,7 @@ const $TodoItemDTO = _$TodoItemDTOTearOff();
 /// @nodoc
 mixin _$TodoItemDTO {
   String get id;
-
   String get name;
-
   bool get done;
 
   Map<String, dynamic> toJson();
@@ -343,7 +343,8 @@ class __$TodoItemDTOCopyWithImpl<$Res> extends _$TodoItemDTOCopyWithImpl<$Res>
 
 @JsonSerializable()
 
-/// @nodoc class _$_TodoItemDTO extends _TodoItemDTO {
+/// @nodoc
+class _$_TodoItemDTO extends _TodoItemDTO {
   const _$_TodoItemDTO(
       {@required this.id, @required this.name, @required this.done})
       : assert(id != null),

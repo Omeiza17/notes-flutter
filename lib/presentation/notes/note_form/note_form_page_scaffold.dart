@@ -1,6 +1,7 @@
 import 'package:ddd_notes/application/notes/form/note_form_bloc.dart';
 import 'package:ddd_notes/presentation/notes/note_form/widgets/body_field_widgets.dart';
 import 'package:ddd_notes/presentation/notes/note_form/widgets/color_field_widget.dart';
+import 'package:ddd_notes/presentation/notes/note_form/widgets/todo_tile_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -42,6 +43,7 @@ class NoteFormPageScaffold extends StatelessWidget {
                 children: <Widget>[
                   const BodyField(),
                   const ColorField(),
+                  const TodoTile(),
                 ],
               ),
             ),
